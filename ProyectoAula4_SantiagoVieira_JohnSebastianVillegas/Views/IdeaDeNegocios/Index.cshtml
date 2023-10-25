@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.IdeaDeNegocio>
+
+@{
+    ViewBag.Title = "Lista De Ideas";
+}
+
+<h2>Lista De Ideas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpactoSocialEconomico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorInversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorInversionInfraestructura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ingresos3Anios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Herramienta4RI.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImpactoSocialEconomico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorInversion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorInversionInfraestructura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingresos3Anios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Herramienta4RI.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2></h2>
+<a href="@Url.Action("Detalles", "IdeaDeNegocios")" class="btn btn-primary">Mas Detalles</a>

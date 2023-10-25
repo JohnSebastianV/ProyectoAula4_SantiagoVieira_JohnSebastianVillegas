@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="350f445a3bee4430b3f9bbf16103944d" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoDeAula4JohnSebastian_SantiagoModel.Departamento" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoDeAula4JohnSebastian_SantiagoModel.Herramienta4RI" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoDeAula4JohnSebastian_SantiagoModel.IdeaDeNegocio" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoDeAula4JohnSebastian_SantiagoModel.IntegranteEquipo" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoDeAula4JohnSebastian_SantiagoModel.FK_IdeaDeNegocio_Herramienta4RI" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoDeAula4JohnSebastian_SantiagoModel.FK_IntegranteEquipo_IdeaDeNegocio" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoDeAula4JohnSebastian_SantiagoModel.IdeaDeNegocio_Departamento" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

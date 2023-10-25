@@ -1,0 +1,14 @@
+﻿@model List<ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.IdeaDeNegocio>
+
+@{
+    ViewBag.Title = "Ideas de Negocio con Desarrollo Sostenible";
+}
+
+<h2>Ideas de Negocio con Desarrollo Sostenible en su Impacto</h2>
+
+<ul>
+    @foreach (var idea in Model)
+    {
+        <li>@idea.Nombre</li>
+    }
+</ul>

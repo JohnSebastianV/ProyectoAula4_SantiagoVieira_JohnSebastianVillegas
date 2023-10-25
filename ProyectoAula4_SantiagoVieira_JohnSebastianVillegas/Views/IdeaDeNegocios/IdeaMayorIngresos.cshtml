@@ -1,0 +1,25 @@
+﻿@model ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.IdeaDeNegocio
+
+<h2>Idea de Negocio con Mayor Ingresos</h2>
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Ingresos en los Primeros 3 Años</th>
+            <!-- Agrega más columnas según tus necesidades -->
+        </tr>
+        <tr>
+            <td>@Model.Nombre</td>
+            <td>@Model.Ingresos3Anios</td>
+            <!-- Agrega más datos aquí -->
+        </tr>
+    </table>
+}
+else
+{
+    <p>La idea de negocio con mayores ingresos no se encuentra disponible.</p>
+}
+
+

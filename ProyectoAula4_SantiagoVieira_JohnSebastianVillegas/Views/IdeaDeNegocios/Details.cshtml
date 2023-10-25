@@ -1,0 +1,66 @@
+﻿@model ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.IdeaDeNegocio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>IdeaDeNegocio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpactoSocialEconomico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpactoSocialEconomico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorInversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorInversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorInversionInfraestructura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorInversionInfraestructura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingresos3Anios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingresos3Anios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Herramienta4RI.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Herramienta4RI.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

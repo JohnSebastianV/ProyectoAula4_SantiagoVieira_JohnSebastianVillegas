@@ -1,0 +1,16 @@
+﻿@model List<ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.IdeaDeNegocio>
+
+@{
+    ViewBag.Title = "Ideas de Negocio con Ingresos Mayores al Promedio";
+}
+
+<h2>Ideas de Negocio con Ingresos Mayores al Promedio</h2>
+
+<ul>
+    @foreach (var idea in Model)
+    {
+        <li>@idea.Nombre</li>
+    }
+</ul>
+
+

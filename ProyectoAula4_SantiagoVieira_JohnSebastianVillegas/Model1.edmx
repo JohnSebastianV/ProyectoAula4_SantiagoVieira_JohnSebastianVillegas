@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoDeAula4JohnSebastian_SantiagoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Herramienta4RI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdeaDeNegocio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="300" Nullable="false" />
+          <Property Name="ImpactoSocialEconomico" Type="nchar" MaxLength="300" Nullable="false" />
+          <Property Name="ValorInversion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ValorInversionInfraestructura" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Ingresos3Anios" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Herramienta4RIID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdeaDeNegocio_Departamento">
+          <Key>
+            <PropertyRef Name="IdeaDeNegocioID" />
+            <PropertyRef Name="DepartamentoCodigo" />
+          </Key>
+          <Property Name="IdeaDeNegocioID" Type="int" Nullable="false" />
+          <Property Name="DepartamentoCodigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IntegranteEquipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdeaDeNegocioID" Type="int" Nullable="false" />
+          <Property Name="Identificacion" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Rol" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IdeaDeNegocio_Departamento_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="IdeaDeNegocio_Departamento" Type="Self.IdeaDeNegocio_Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="IdeaDeNegocio_Departamento">
+              <PropertyRef Name="DepartamentoCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaDeNegocio_Departamento_IdeaDeNegocio">
+          <End Role="IdeaDeNegocio" Type="Self.IdeaDeNegocio" Multiplicity="1" />
+          <End Role="IdeaDeNegocio_Departamento" Type="Self.IdeaDeNegocio_Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdeaDeNegocio">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IdeaDeNegocio_Departamento">
+              <PropertyRef Name="IdeaDeNegocioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdeaDeNegocio_Herramienta4RI">
+          <End Role="Herramienta4RI" Type="Self.Herramienta4RI" Multiplicity="1" />
+          <End Role="IdeaDeNegocio" Type="Self.IdeaDeNegocio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Herramienta4RI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IdeaDeNegocio">
+              <PropertyRef Name="Herramienta4RIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegranteEquipo_IdeaDeNegocio">
+          <End Role="IdeaDeNegocio" Type="Self.IdeaDeNegocio" Multiplicity="1" />
+          <End Role="IntegranteEquipo" Type="Self.IntegranteEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdeaDeNegocio">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IntegranteEquipo">
+              <PropertyRef Name="IdeaDeNegocioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoDeAula4JohnSebastian_SantiagoModelStoreContainer">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Herramienta4RI" EntityType="Self.Herramienta4RI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdeaDeNegocio" EntityType="Self.IdeaDeNegocio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdeaDeNegocio_Departamento" EntityType="Self.IdeaDeNegocio_Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntegranteEquipo" EntityType="Self.IntegranteEquipo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_IdeaDeNegocio_Departamento_Departamento" Association="Self.FK_IdeaDeNegocio_Departamento_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="IdeaDeNegocio_Departamento" EntitySet="IdeaDeNegocio_Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaDeNegocio_Departamento_IdeaDeNegocio" Association="Self.FK_IdeaDeNegocio_Departamento_IdeaDeNegocio">
+            <End Role="IdeaDeNegocio" EntitySet="IdeaDeNegocio" />
+            <End Role="IdeaDeNegocio_Departamento" EntitySet="IdeaDeNegocio_Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdeaDeNegocio_Herramienta4RI" Association="Self.FK_IdeaDeNegocio_Herramienta4RI">
+            <End Role="Herramienta4RI" EntitySet="Herramienta4RI" />
+            <End Role="IdeaDeNegocio" EntitySet="IdeaDeNegocio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegranteEquipo_IdeaDeNegocio" Association="Self.FK_IntegranteEquipo_IdeaDeNegocio">
+            <End Role="IdeaDeNegocio" EntitySet="IdeaDeNegocio" />
+            <End Role="IntegranteEquipo" EntitySet="IntegranteEquipo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoDeAula4JohnSebastian_SantiagoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="IdeaDeNegocio" Relationship="Self.IdeaDeNegocio_Departamento" FromRole="Departamento" ToRole="IdeaDeNegocio" />
+        </EntityType>
+        <EntityType Name="Herramienta4RI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="IdeaDeNegocio" Relationship="Self.FK_IdeaDeNegocio_Herramienta4RI" FromRole="Herramienta4RI" ToRole="IdeaDeNegocio" />
+        </EntityType>
+        <EntityType Name="IdeaDeNegocio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ImpactoSocialEconomico" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ValorInversion" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ValorInversionInfraestructura" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Ingresos3Anios" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Herramienta4RIID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Herramienta4RI" Relationship="Self.FK_IdeaDeNegocio_Herramienta4RI" FromRole="IdeaDeNegocio" ToRole="Herramienta4RI" />
+          <NavigationProperty Name="IntegranteEquipo" Relationship="Self.FK_IntegranteEquipo_IdeaDeNegocio" FromRole="IdeaDeNegocio" ToRole="IntegranteEquipo" />
+          <NavigationProperty Name="Departamento" Relationship="Self.IdeaDeNegocio_Departamento" FromRole="IdeaDeNegocio" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="IntegranteEquipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdeaDeNegocioID" Type="Int32" Nullable="false" />
+          <Property Name="Identificacion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="IdeaDeNegocio" Relationship="Self.FK_IntegranteEquipo_IdeaDeNegocio" FromRole="IntegranteEquipo" ToRole="IdeaDeNegocio" />
+        </EntityType>
+        <Association Name="FK_IdeaDeNegocio_Herramienta4RI">
+          <End Role="Herramienta4RI" Type="Self.Herramienta4RI" Multiplicity="1" />
+          <End Role="IdeaDeNegocio" Type="Self.IdeaDeNegocio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Herramienta4RI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IdeaDeNegocio">
+              <PropertyRef Name="Herramienta4RIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegranteEquipo_IdeaDeNegocio">
+          <End Role="IdeaDeNegocio" Type="Self.IdeaDeNegocio" Multiplicity="1" />
+          <End Role="IntegranteEquipo" Type="Self.IntegranteEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdeaDeNegocio">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IntegranteEquipo">
+              <PropertyRef Name="IdeaDeNegocioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdeaDeNegocio_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <End Role="IdeaDeNegocio" Type="Self.IdeaDeNegocio" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProyectoDeAula4JohnSebastian_SantiagoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Herramienta4RI" EntityType="Self.Herramienta4RI" />
+          <EntitySet Name="IdeaDeNegocio" EntityType="Self.IdeaDeNegocio" />
+          <EntitySet Name="IntegranteEquipo" EntityType="Self.IntegranteEquipo" />
+          <AssociationSet Name="FK_IdeaDeNegocio_Herramienta4RI" Association="Self.FK_IdeaDeNegocio_Herramienta4RI">
+            <End Role="Herramienta4RI" EntitySet="Herramienta4RI" />
+            <End Role="IdeaDeNegocio" EntitySet="IdeaDeNegocio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegranteEquipo_IdeaDeNegocio" Association="Self.FK_IntegranteEquipo_IdeaDeNegocio">
+            <End Role="IdeaDeNegocio" EntitySet="IdeaDeNegocio" />
+            <End Role="IntegranteEquipo" EntitySet="IntegranteEquipo" />
+          </AssociationSet>
+          <AssociationSet Name="IdeaDeNegocio_Departamento" Association="Self.IdeaDeNegocio_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="IdeaDeNegocio" EntitySet="IdeaDeNegocio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoDeAula4JohnSebastian_SantiagoModelStoreContainer" CdmEntityContainer="ProyectoDeAula4JohnSebastian_SantiagoEntities">
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="ProyectoDeAula4JohnSebastian_SantiagoModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Herramienta4RI">
+            <EntityTypeMapping TypeName="ProyectoDeAula4JohnSebastian_SantiagoModel.Herramienta4RI">
+              <MappingFragment StoreEntitySet="Herramienta4RI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdeaDeNegocio">
+            <EntityTypeMapping TypeName="ProyectoDeAula4JohnSebastian_SantiagoModel.IdeaDeNegocio">
+              <MappingFragment StoreEntitySet="IdeaDeNegocio">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ImpactoSocialEconomico" ColumnName="ImpactoSocialEconomico" />
+                <ScalarProperty Name="ValorInversion" ColumnName="ValorInversion" />
+                <ScalarProperty Name="ValorInversionInfraestructura" ColumnName="ValorInversionInfraestructura" />
+                <ScalarProperty Name="Ingresos3Anios" ColumnName="Ingresos3Anios" />
+                <ScalarProperty Name="Herramienta4RIID" ColumnName="Herramienta4RIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntegranteEquipo">
+            <EntityTypeMapping TypeName="ProyectoDeAula4JohnSebastian_SantiagoModel.IntegranteEquipo">
+              <MappingFragment StoreEntitySet="IntegranteEquipo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IdeaDeNegocioID" ColumnName="IdeaDeNegocioID" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="IdeaDeNegocio_Departamento" TypeName="ProyectoDeAula4JohnSebastian_SantiagoModel.IdeaDeNegocio_Departamento" StoreEntitySet="IdeaDeNegocio_Departamento">
+            <EndProperty Name="Departamento">
+              <ScalarProperty Name="Codigo" ColumnName="DepartamentoCodigo" />
+            </EndProperty>
+            <EndProperty Name="IdeaDeNegocio">
+              <ScalarProperty Name="ID" ColumnName="IdeaDeNegocioID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
