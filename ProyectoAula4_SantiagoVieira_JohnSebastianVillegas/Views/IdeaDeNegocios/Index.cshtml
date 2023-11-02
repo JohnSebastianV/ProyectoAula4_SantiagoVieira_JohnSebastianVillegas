@@ -7,7 +7,7 @@
 <h2>Lista De Ideas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva Idea De Negocio", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,9 +54,9 @@
                 @Html.DisplayFor(modelItem => item.Herramienta4RI.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
             </td>
         </tr>
     }
@@ -64,4 +64,4 @@
 </table>
 
 <h2></h2>
-<a href="@Url.Action("Detalles", "IdeaDeNegocios")" class="btn btn-primary">Mas Detalles</a>
+<a href="@Url.Action("Detalles", "IdeaDeNegocios")" class="btn btn-primary">Mas Detalles de las Ideas</a>

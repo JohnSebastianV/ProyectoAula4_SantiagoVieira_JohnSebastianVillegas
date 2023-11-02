@@ -11,7 +11,8 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class IdeaDeNegocio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,12 +21,25 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas
             this.IntegranteEquipo = new HashSet<IntegranteEquipo>();
             this.Departamento = new HashSet<Departamento>();
         }
-    
+
+
+        
+        [Display(Name = "Nombre Idea De Negocio")]
         public int ID { get; set; }
+        [Display(Name = "Nombre Idea De Negocio")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Impacto Social y Economico")]
         public string ImpactoSocialEconomico { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Valor Inversion")]
         public decimal ValorInversion { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Valor Inversion de Infraestructura")]
         public decimal ValorInversionInfraestructura { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Ingresos en 3 años")]
         public decimal Ingresos3Anios { get; set; }
         public int Herramienta4RIID { get; set; }
     

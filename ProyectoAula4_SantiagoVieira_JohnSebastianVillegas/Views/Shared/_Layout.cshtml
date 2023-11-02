@@ -11,15 +11,15 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Proyecto De Aula 4", "Index", "IdeaDeNegocios", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Proyecto De Aula 4", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Idea De Negocios", "Index", "IdeaDeNegocios", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Integrante equipo", "Index", "IntegranteEquipo", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Ideas De Negocios", "Index", "IdeaDeNegocios", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Integrantes De equipos", "Index", "IntegranteEquipo", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Herramientas4RI", "Index", "Herramienta4RI", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year </p>
+            <p>&copy; @DateTime.Now.Year - Proyecto De Aula 4 </p>
         </footer>
     </div>
 

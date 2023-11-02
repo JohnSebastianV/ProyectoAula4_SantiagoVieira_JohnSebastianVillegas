@@ -14,14 +14,14 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
     {
         private ProyectoDeAula4JohnSebastian_SantiagoEntities db = new ProyectoDeAula4JohnSebastian_SantiagoEntities();
 
-        // GET: IntegranteEquipo
+        
         public ActionResult Index()
         {
             var integranteEquipo = db.IntegranteEquipo.Include(i => i.IdeaDeNegocio);
             return View(integranteEquipo.ToList());
         }
 
-        // GET: IntegranteEquipo/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,16 +36,14 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(integranteEquipo);
         }
 
-        // GET: IntegranteEquipo/Create
+        
         public ActionResult Create()
         {
             ViewBag.IdeaDeNegocioID = new SelectList(db.IdeaDeNegocio, "ID", "Nombre");
             return View();
         }
 
-        // POST: IntegranteEquipo/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,IdeaDeNegocioID,Identificacion,Nombre,Apellido,Rol,Email")] IntegranteEquipo integranteEquipo)
@@ -62,7 +60,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
         }
 
 
-        // GET: IntegranteEquipo/Edit/5
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,9 +76,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(integranteEquipo);
         }
 
-        // POST: IntegranteEquipo/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,IdeaDeNegocioID,Identificacion,Nombre,Apellido,Rol,Email")] IntegranteEquipo integranteEquipo)
@@ -95,7 +91,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(integranteEquipo);
         }
 
-        // GET: IntegranteEquipo/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +106,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(integranteEquipo);
         }
 
-        // POST: IntegranteEquipo/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -11,17 +11,28 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class IntegranteEquipo
     {
         public int ID { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Idea de Negocio a la que pertenece")]
         public int IdeaDeNegocioID { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Identificacion { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Apellido { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Rol { get; set; }
+        [EmailAddress(ErrorMessage = "Ingresa una dirección de correo electrónico válida.")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Email { get; set; }
-    
+
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Idea de Negocio a la que pertenece")]
         public virtual IdeaDeNegocio IdeaDeNegocio { get; set; }
     }
 }

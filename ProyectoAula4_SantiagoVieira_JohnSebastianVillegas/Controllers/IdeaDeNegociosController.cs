@@ -16,14 +16,14 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
     {
         private ProyectoDeAula4JohnSebastian_SantiagoEntities db = new ProyectoDeAula4JohnSebastian_SantiagoEntities();
 
-        // GET: IdeaDeNegocios
+        
         public ActionResult Index()
         {
             var ideaDeNegocio = db.IdeaDeNegocio.Include(i => i.Herramienta4RI);
             return View(ideaDeNegocio.ToList());
         }
 
-        // GET: IdeaDeNegocios/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,16 +38,14 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(ideaDeNegocio);
         }
 
-        // GET: IdeaDeNegocios/Create
+        
         public ActionResult Create()
         {
             ViewBag.Herramienta4RIID = new SelectList(db.Herramienta4RI, "ID", "Nombre");
             return View();
         }
 
-        // POST: IdeaDeNegocios/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre,ImpactoSocialEconomico,ValorInversion,ValorInversionInfraestructura,Ingresos3Anios,Herramienta4RIID")] IdeaDeNegocio ideaDeNegocio)
@@ -63,7 +61,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(ideaDeNegocio);
         }
 
-        // GET: IdeaDeNegocios/Edit/5
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,9 +77,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(ideaDeNegocio);
         }
 
-        // POST: IdeaDeNegocios/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Nombre,ImpactoSocialEconomico,ValorInversion,ValorInversionInfraestructura,Ingresos3Anios,Herramienta4RIID")] IdeaDeNegocio ideaDeNegocio)
@@ -96,7 +92,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(ideaDeNegocio);
         }
 
-        // GET: IdeaDeNegocios/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,7 +107,7 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas.Controllers
             return View(ideaDeNegocio);
         }
 
-        // POST: IdeaDeNegocios/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

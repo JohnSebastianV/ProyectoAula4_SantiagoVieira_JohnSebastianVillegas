@@ -11,7 +11,8 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Herramienta4RI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace ProyectoAula4_SantiagoVieira_JohnSebastianVillegas
         }
     
         public int ID { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Nombre de la Herramienta")]
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
